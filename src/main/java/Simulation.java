@@ -65,6 +65,7 @@ public class Simulation {
                 printString(getHeader());
             }
         }
+        status = vehicle.getStatus(burnInterval); //added
         printString(vehicle.checkFinalStatus());
         if (status != null) {
             return status.getStatus();
@@ -74,8 +75,11 @@ public class Simulation {
 
     public static void main(String[] args) {
         // create a new Simulation object with a random starting altitude
+        Simulation sim = new Simulation(new Vehicle(Simulation.randomaltitude()));
         // create a new BurnInputStream
+        BurnStream bs = new BurnInputStream(); //maybe another burnSource
         // pass the new BurnInputStream to the runSimulation method
+        sim.runSimulation(bs);
     }
 
 }
